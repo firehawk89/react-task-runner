@@ -13,17 +13,13 @@ export function TodoListsContextProvider({ children }) {
   const [todoLists, setTodoLists] = useState([]);
 
   useEffect(() => {
-    const applyTodoListsData = (data) => {
-      setTodoLists(data);
-    };
-
-    fetchTodoLists({ url: "/api/v1/todo-lists/" }, applyTodoListsData);
+    fetchTodoLists({ url: "/api/v1/todo-lists/" }, (data) =>
+      setTodoLists(data)
+    );
   }, [fetchTodoLists]);
 
   return (
-    <TodoListsContext.Provider
-      value={{ isLoading, error, todoLists, onSearch: fetchTodoLists }}
-    >
+    <TodoListsContext.Provider value={{ isLoading, error, todoLists }}>
       {children}
     </TodoListsContext.Provider>
   );
