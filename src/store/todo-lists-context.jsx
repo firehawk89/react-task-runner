@@ -19,7 +19,14 @@ export function TodoListsContextProvider({ children }) {
   }, [fetchTodoLists]);
 
   return (
-    <TodoListsContext.Provider value={{ isLoading, error, todoLists }}>
+    <TodoListsContext.Provider
+      value={{
+        isLoading,
+        error,
+        todoLists,
+        setTodoLists,
+      }}
+    >
       {children}
     </TodoListsContext.Provider>
   );

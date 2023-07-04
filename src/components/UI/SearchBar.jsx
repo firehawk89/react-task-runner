@@ -4,12 +4,12 @@ import Input from "@mui/material/Input";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 
-export default function SearchBar({ label }) {
+export default function SearchBar({ label, onSearch }) {
   const searchInputRef = useRef(null);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(searchInputRef.current.value);
+    onSearch(searchInputRef.current.value);
     searchInputRef.current.value = "";
   };
 
