@@ -13,9 +13,11 @@ export function TodoListsContextProvider({ children }) {
   const [todoLists, setTodoLists] = useState([]);
 
   useEffect(() => {
-    fetchTodoLists({ url: "/api/v1/todo-lists/" }, (data) =>
-      setTodoLists(data)
-    );
+    const applyTodoListsData = (data) => {
+      setTodoLists(data);
+    };
+
+    fetchTodoLists({ url: "/api/v1/todo-lists/" }, applyTodoListsData);
   }, [fetchTodoLists]);
 
   return (
